@@ -1,0 +1,22 @@
+{
+    "name": "mayunfeng/yii2-aliyunlog",
+    "type": "yii2-extension",
+    "description": "aliyun-log sdk for yii2",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "马运锋",
+            "email": "mayunfeng@jwsem.com"
+        }
+    ],
+    "require": {
+        "php": ">7.0.1",
+        "yiisoft/yii2": "*",
+        "moolex/aliyun-sls-sdk-php": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "mayunfeng\\AliYunLog\\": "src/"
+        }
+    }
+}
