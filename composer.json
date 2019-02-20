@@ -13,7 +13,7 @@
     "require": {
         "php": ">7.0.1",
         "yiisoft/yii2": "*",
-        "moolex/aliyun-sls-sdk-php": "dev-master"
+        "moolex/aliyun-sls-sdk-php": "@dev"
     },
     "autoload": {
         "psr-4": {
