@@ -6,12 +6,10 @@
  * Time: 15:49
  */
 
-namespace AliYunLog;
+namespace mayunfeng\AliYunLog;
 
-use Aliyun\SLS\Client;
-use Aliyun\SLS\Exception;
-use Aliyun\SLS\Models\LogItem;
-use Aliyun\SLS\Models\PutLogsRequest;
+use Aliyun\Log\Client;
+use Aliyun\Log\Models\Request;
 use yii\base\Component;
 
 class AliYunLog extends Component
@@ -25,7 +23,7 @@ class AliYunLog extends Component
 
     private static $_client;
 
-    private function client()
+    public function client()
     {
         if (!self::$_client instanceof Client) {
             self::$_client = new Client($this->endpoint, $this->accessKeyId, $this->accessKey, $this->token);
@@ -34,23 +32,14 @@ class AliYunLog extends Component
     }
 
 
-    public function putLogs($project, $logstore)
+    public function __call($method, $arguments)
     {
-        $topic = 'TestTopic';
-        $contents = array(
-            'TestKey' => 'TestContent'
-        );
-        $logItem = new LogItem();
-        $logItem->setTime(time());
-        $logItem->setContents($contents);
-        $logitems = array($logItem);
-        $request = new PutLogsRequest($project, $logstore,$topic, null, $logitems);
+        if (!empty($arguments) && $arguments[0] instanceof Request) {
 
-        try {
-            $response = $this->client()->putLogs($request);
-            var_dump($response);
-        } catch (Exception $ex) {
-            var_dump($ex);
+            var_dump($method,$arguments[0]);
+            $res = $this->client()->$method($arguments[0]);
+
+            var_dump($res);
         }
     }
 
