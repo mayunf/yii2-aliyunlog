@@ -3,6 +3,7 @@
     "type": "yii2-extension",
     "description": "aliyun-log sdk for yii2",
     "license": "BSD-2-Clause",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "马运锋",
