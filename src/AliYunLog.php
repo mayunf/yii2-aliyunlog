@@ -35,12 +35,11 @@ class AliYunLog extends Component
     public function __call($method, $arguments)
     {
         if (!empty($arguments) && $arguments[0] instanceof Request) {
-
-            var_dump($method,$arguments[0]);
-            $res = $this->client()->$method($arguments[0]);
-
-            var_dump($res);
+            return $this->client()->$method($arguments[0]);
         }
+
+        throw new \Exception('Method `' . $method . '` not found');
+
     }
 
 
